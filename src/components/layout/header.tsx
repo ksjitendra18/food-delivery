@@ -30,14 +30,14 @@ const Header = () => {
           </ul>
 
           <div className="cta flex items-center flex-col md:flex-row justify-center gap-5 md:gap-7">
-            <a href="/api/auth/login">
+            <Link href="/api/auth/login">
               <p>Login</p>
-            </a>
-            <a href="/api/auth/login">
+            </Link>
+            <Link href="/api/auth/login">
               <button className="bg-white text-primary font-bold px-6 py-2 rounded-lg">
                 Signup
               </button>
-            </a>
+            </Link>
           </div>
         </div>
         <div
