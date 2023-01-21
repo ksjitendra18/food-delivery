@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -15,4 +16,34 @@ ul {
 }
 button {
   border: none;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-section {
+  margin: 24px 20px;
+}
+
+@media (min-width: 768px) {
+  .page-section {
+    margin: 50px auto;
+  }
+}
+
+.trendingcard {
+  width: 250px !important;
+}
+
+.hamburger.active > span.bar:nth-child(2) {
+  display: none;
+}
+.hamburger.active > span.bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active > span.bar:nth-child(3) {
+  transform: translateY(-1px) rotate(-45deg);
 }
