@@ -1,6 +1,14 @@
+import { useUser } from "@auth0/nextjs-auth0/client";
 import React, { useState } from "react";
 
 const ConfirmEmail = () => {
+  // TODO: CHECK FOR PROFILE COMPLETION
+  const emailVerificationStatus = useUser().user?.email_verified;
+  emailVerificationStatus
+    ? sessionStorage.setItem("emailConfirmBanner", "true")
+    : null;
+  console.log("user email verification status", emailVerificationStatus);
+
   const getBannerStatusFromSession = () => {
     const userOption = sessionStorage.getItem("emailConfirmBanner");
 

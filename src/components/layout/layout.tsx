@@ -19,7 +19,8 @@ const Layout = ({ children }: LayoutProps) => {
       {user && user.user !== undefined && <ConfirmEmail />}
       <Header />
       {/* <main className="p-6 md:p-9 md:px-11">{children}</main> */}
-      <main className={` ${sora.className} p-6 md:p-9 md:px-11`}>
+      {/* <main className={` ${sora.className} p-6 md:p-9 md:px-11`}> */}
+      <main className={` ${sora.className}`}>
         {/* <main> */}
         <ToastContainer
           position="top-right"

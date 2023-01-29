@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Sora } from "@next/font/google";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
@@ -11,12 +11,12 @@ const Header = () => {
   console.log("open nav is", openNav);
   return (
     <header
-      className={`${sora.className} bg-primary text-[18px] text-white h-[50px] md:h-[80px] `}
+      className={`${sora.className} bg-primary text-[18px] text-white h-[50px] md:h-[80px] sticky `}
     >
       <div className="header relative  py-2 md:py-4 px-5 md:px-11 flex justify-between items-center">
         {/* <h1 className={`${dmSans.className} font-bold text-3xl`}> */}
         <h1 className="font-bold text-2xl md:text-3xl">
-          <Link href="/">Food Express</Link>
+          <Link href="/">Food Ordering</Link>
         </h1>
 
         <div className="hidden md:flex items-center gap-20 ">
@@ -29,16 +29,28 @@ const Header = () => {
             </li>
           </ul>
 
-          <div className="cta flex items-center flex-col md:flex-row justify-center gap-5 md:gap-7">
-            <Link href="/api/auth/login">
-              <p>Login</p>
-            </Link>
-            <Link href="/api/auth/login">
-              <button className="bg-white text-primary font-bold px-6 py-2 rounded-lg">
-                Signup
-              </button>
-            </Link>
-          </div>
+          {user.isLoading ? (
+            <div>loading...</div>
+          ) : user?.user ? (
+            <div className="cta flex items-center flex-col md:flex-row justify-center gap-5 md:gap-7">
+              <Link href="/api/auth/logout">
+                <button className="bg-white text-primary font-bold px-6 py-2 rounded-lg">
+                  Logout
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div className="cta flex items-center flex-col md:flex-row justify-center gap-5 md:gap-7">
+              <Link href="/api/auth/login">
+                <p>Login</p>
+              </Link>
+              <Link href="/api/auth/login">
+                <button className="bg-white text-primary font-bold px-6 py-2 rounded-lg">
+                  Signup
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
         <div
           className={`${

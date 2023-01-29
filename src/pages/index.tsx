@@ -1,5 +1,7 @@
 import { Sora } from "@next/font/google";
 import Head from "next/head";
+import Features from "../components/homepage/features";
+import HeroSection from "../components/homepage/heroSection";
 
 const sora = Sora({ subsets: ["latin"] });
 
@@ -13,7 +15,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <p className={`${sora.className} text-3xl font-bold`}>hello world</p>
+      <HeroSection />
+      <Features />
     </>
   );
 }
