@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../../utils/dbConnect";
 import Items from "../../../models/foodItemModel";
-export default async function handler(req: NextRequest, res: NextResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   await dbConnect();
   try {
     const featuredItems = await Items.find({ itemIsFeatured: true }).exec();

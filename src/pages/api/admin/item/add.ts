@@ -1,8 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../../../utils/dbConnect";
 import Items from "../../../../models/foodItemModel";
-export default async function handler(req: NextRequest, res: NextResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();
+
+  // const data = JSON.parse(req.body);
   const data = JSON.parse(req.body);
   console.log("todoData", data);
   const itemDetails = await Items.create(data);
