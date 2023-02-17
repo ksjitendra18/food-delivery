@@ -7,19 +7,15 @@ const ConfirmEmail = () => {
   emailVerificationStatus
     ? sessionStorage.setItem("emailConfirmBanner", "true")
     : null;
-  console.log("user email verification status", emailVerificationStatus);
 
   const getBannerStatusFromSession = () => {
     const userOption = sessionStorage.getItem("emailConfirmBanner");
-
-    console.log("user option", userOption);
 
     if (userOption) {
       return userOption === "false" ? false : true;
     }
   };
 
-  console.log("user option", getBannerStatusFromSession());
   const [closeConfirmEmail, setCloseConfirmEmail] = useState(
     getBannerStatusFromSession() || false
   );

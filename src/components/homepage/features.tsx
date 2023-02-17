@@ -12,7 +12,7 @@ const Features = () => {
 
       <div className="flex flex-col md:flex-row justify-center md:gap-10 lg:gap-32">
         <FeaturesCard>
-          <h3 className="font-bold text-[25px] mt-3 mb-10">
+          <h3 className="font-bold text-center text-[25px] mt-3 mb-10">
             1000+ Ratings(4.3)
           </h3>
           <Image
