@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { Key, useEffect, useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import TrendingCard from "./trendingCard";
 import useSWR from "swr";
@@ -33,7 +33,7 @@ const Trending = () => {
       <div className="flex justify-center items-center flex-col md:flex-row gap-10 mt-20">
         {!isLoading ? (
           data.data.map((item: Item) => (
-            <TrendingCard key={item._id} item={item} />
+            <TrendingCard key={item._id as Key} item={item} />
           ))
         ) : (
           <Loading />

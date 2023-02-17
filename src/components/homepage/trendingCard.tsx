@@ -6,7 +6,10 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Item from "../../types/ItemType";
 
-const TrendingCard = ({ item }) => {
+interface TrendingCardsProps {
+  item: Item;
+}
+const TrendingCard = ({ item }: TrendingCardsProps) => {
   const dispatch = useDispatch();
   const showToastMessage = () => {
     toast.success("Item Added to Cart", {
