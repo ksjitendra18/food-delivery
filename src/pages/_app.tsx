@@ -25,10 +25,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <Provider store={store}>
         <UserProvider>
           {/* urlEndpoint={process.env.NEXT_PUBLIC_URLENDPOINT} */}
+          {/* urlEndpoint={"https://ik.imagekit.io/0k5q0nffi/food-express"} */}
           <IKContext
-            urlEndpoint="https://ik.imagekit.io/0k5q0nffi/food-express"
+            urlEndpoint={process.env.NEXT_PUBLIC_URLENDPOINT}
             publicKey={process.env.NEXT_PUBLIC_PUBLICKEY}
-            authenticationEndpoint="http://localhost:3000/api/ikauth"
+            authenticationEndpoint={process.env.NEXT_PUBLIC_IK_AUTHENDPOINT}
           >
             <Layout>
               <Component {...pageProps} />
