@@ -14,7 +14,7 @@ const Container = ({
 }: ContainerProps) => {
   if (as === "section") {
     return (
-      <section className={`p-6 md:p-9 md:px-11 ${additionalClasses}`}>
+      <section className={`p-5 md:p-9 md:px-11 ${additionalClasses}`}>
         {children}
       </section>
     );

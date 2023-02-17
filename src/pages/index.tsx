@@ -1,9 +1,8 @@
-import { Sora } from "@next/font/google";
 import Head from "next/head";
+
 import Features from "../components/homepage/features";
 import HeroSection from "../components/homepage/heroSection";
-
-const sora = Sora({ subsets: ["latin"] });
+import Trending from "../components/homepage/trending";
 
 export default function Home() {
   return (
@@ -17,6 +16,7 @@ export default function Home() {
 
       <HeroSection />
       <Features />
+      <Trending />
     </>
   );
 }

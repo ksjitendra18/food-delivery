@@ -7,8 +7,7 @@ const sora = Sora({ subsets: ["latin"] });
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const user = useUser();
-  console.log("user info is", user);
-  console.log("open nav is", openNav);
+
   return (
     <header
       className={`${sora.className} bg-primary text-[18px] text-white h-[50px] md:h-[80px] sticky `}
@@ -25,7 +24,7 @@ const Header = () => {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/features">All Items</Link>
+              <Link href="/order">All Items</Link>
             </li>
           </ul>
 
@@ -76,14 +75,28 @@ const Header = () => {
           </ul>
 
           <div className="cta mt-10 flex flex-col items-center">
-            <Link href="/login" onClick={() => setOpenNav(false)}>
-              <p>Login</p>
-            </Link>
-            <Link href="/signup" onClick={() => setOpenNav(false)}>
-              <button className=" bg-white text-primary font-bold px-8 py-2 rounded-lg mt-4 ">
-                Signup
-              </button>
-            </Link>
+            {user.isLoading ? (
+              <div>loading...</div>
+            ) : user?.user ? (
+              <div className="cta flex items-center flex-col md:flex-row justify-center gap-5 md:gap-7">
+                <Link href="/api/auth/logout">
+                  <button className="bg-white text-primary font-bold px-6 py-2 rounded-lg">
+                    Logout
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div className="cta flex items-center flex-col md:flex-row justify-center gap-5 md:gap-7">
+                <Link href="/api/auth/login">
+                  <p>Login</p>
+                </Link>
+                <Link href="/api/auth/login">
+                  <button className="bg-white text-primary font-bold px-6 py-2 rounded-lg">
+                    Signup
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </nav>
       )}
