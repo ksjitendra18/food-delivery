@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { MdCloudUpload } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Id, toast } from "react-toastify";
-import Loading from "../UI/Loading";
+import Loading from "../ui/Loading";
 import {
   deleteUploadedImage,
   setUploadedImageId,

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React, { Suspense } from "react";
 import CategorySection from "../../components/items/categorySection";
-import Loading from "../../components/UI/Loading";
+import Loading from "../../components/ui/Loading";
 
 const OrderPage = () => {
   return (

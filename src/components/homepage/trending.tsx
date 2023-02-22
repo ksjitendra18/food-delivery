@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Key } from "react";
 import useSWR from "swr";
 
-import Loading from "../UI/Loading";
+import Loading from "../ui/Loading";
 import Item from "../../types/ItemType";
 import ItemCard from "../items/itemCard";
 

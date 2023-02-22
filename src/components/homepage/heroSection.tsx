@@ -2,7 +2,7 @@ import { IKImage } from "imagekitio-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Container from "../MainContainer/container";
+import Container from "../mainContainer/container";
 
 const HeroSection = () => {
   const imageStyle = {

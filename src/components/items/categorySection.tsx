@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import Item from "../../types/ItemType";
 // import { addToCart } from "../store/cartSlice";
 import useSWR from "swr";
-import Loading from "../UI/Loading";
+import Loading from "../ui/Loading";
 import ItemCard from "./itemCard";
 interface CategorySectionProps {
   category: string;
