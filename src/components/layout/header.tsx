@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { Suspense, useState } from "react";
 import { Sora } from "@next/font/google";
+import { Inter } from "@next/font/google";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 const sora = Sora({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const user = useUser();
 
   return (
     <header
-      className={`${sora.className} bg-primary text-[18px] text-white h-[50px] md:h-[80px] sticky `}
+      className={`${inter.className} bg-primary text-[18px] text-white h-[50px] md:h-[80px] sticky `}
     >
       <div className="header relative  py-2 md:py-4 px-5 md:px-11 flex justify-between items-center">
         {/* <h1 className={`${dmSans.className} font-bold text-3xl`}> */}
