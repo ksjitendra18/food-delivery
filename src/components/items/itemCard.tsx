@@ -3,6 +3,7 @@ import Item from "../../types/ItemType";
 import { MdAddShoppingCart } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { addToCart } from "../../store/cart/cartSlice";
 interface ItemCardProps {
   item: Item;
 }
@@ -15,8 +16,8 @@ const ItemCard = ({ item }: ItemCardProps) => {
   };
 
   const handleAddToCart = (item: Item) => {
-    console.log(item);
-    // dispatch(addToCart(item));
+    // console.log(item);
+    dispatch(addToCart(item));
     showToastMessage();
   };
   return (

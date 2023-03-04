@@ -23,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
       {/* <main className={` ${sora.className} p-6 md:p-9 md:px-11`}> */}
       <main className={` ${inter.className}`}>
         {/* <main> */}
-        <ToastContainer
+        {/* <ToastContainer
           position="top-right"
           autoClose={1500}
           hideProgressBar={false}
@@ -34,7 +34,7 @@ const Layout = ({ children }: LayoutProps) => {
           draggable
           pauseOnHover={false}
           theme="light"
-        />
+        /> */}
         {children}
       </main>
       <Footer />

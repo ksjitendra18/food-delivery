@@ -1,14 +1,55 @@
 import Link from "next/link";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { Sora } from "@next/font/google";
 import { Inter } from "@next/font/google";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { useSelector } from "react-redux";
+import Item from "../../types/ItemType";
 
 const sora = Sora({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const user = useUser();
+
+  const [cartCount, setCartCount] = useState(0);
+
+  const cartItem = useSelector((state: any) => state.cartReducer.cart);
+
+  // let total: number[] = [];
+  // if (cartItem?.length > 0) {
+  //   total = cartItem.map((item: Item) => item.quantity);
+  //   console.log("total is", total);
+  // }
+
+  // useEffect(() => {
+  //   console.log("use effect fired", total);
+  //   sumOfItems(total);
+  // }, [cartItem, total]);
+
+  const total = useMemo(() => {
+    if (cartItem?.length > 0) {
+      return cartItem.map((item: Item) => item.quantity);
+    } else {
+      return [];
+    }
+  }, [cartItem]);
+
+  useEffect(() => {
+    sumOfItems(total);
+  }, [cartItem, total]);
+
+  const sumOfItems = (array: number[]) => {
+    let sum = 0;
+
+    Array.from(array).forEach((item) => {
+      sum += item;
+    });
+
+    setCartCount(sum);
+
+    return sum;
+  };
 
   return (
     <header
@@ -27,6 +68,21 @@ const Header = () => {
             </li>
             <li>
               <Link href="/order">All Items</Link>
+            </li>
+
+            <li className="">
+              <Link href="/cart">
+                <div className="bg-white text-black py-2 px-5 rounded-full text-[17px] flex items-center">
+                  Cart
+                  {cartCount !== 0 ? (
+                    <span className="ml-2 py-[3px] px-[9px] text-white text-sm font-bold rounded-full bg-primary">
+                      {cartCount}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </Link>
             </li>
           </ul>
 
