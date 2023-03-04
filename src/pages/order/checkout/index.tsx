@@ -19,7 +19,7 @@ export default function CheckoutPage() {
   const user = useUser();
 
   const [items, setItems] = useState([]);
-  const [cartItemId, setCartItemId] = useState([]);
+  const [cartItemId, setCartItemId] = useState<string[]>([]);
 
   const getTotal = () => {
     let totalQuantity = 0;
