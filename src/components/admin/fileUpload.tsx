@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { MdCloudUpload } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Id, toast } from "react-toastify";
-import Loading from "../UI/Loading";
+import Loading from "../ui/Loading";
 import {
   deleteUploadedImage,
   setUploadedImageId,
@@ -91,7 +91,7 @@ const FileUpload = () => {
         </label>
       ) : (
         <div className="flex flex-col gap-5">
-          <img src={imageUrl!} width="300" />
+          <img src={imageUrl!} className="h-[200px] w-[200px]" />
 
           {/* <button
             className="bg-red-800 text-white rounded-lg px-5 py-2"

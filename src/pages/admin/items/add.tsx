@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 import { Id, toast } from "react-toastify";
 
 import FileUpload from "../../../components/admin/fileUpload";
-import Container from "../../../components/MainContainer/container";
-import FormError from "../../../components/UI/formError";
+import Container from "../../../components/mainContainer/container";
+import FormError from "../../../components/ui/formError";
 export type AdminAddItemsInputs = {
   itemName: string;
   itemPrice: number;

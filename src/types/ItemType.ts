@@ -1,6 +1,6 @@
 export default interface Item {
   __v?: Number;
-  _id: String;
+  _id: string;
   itemName: string;
   itemCategory: string;
   itemImageUrl: string;
@@ -9,4 +9,5 @@ export default interface Item {
   itemRating: number;
   itemIsFeatured: boolean;
   itemIsAvailable: boolean;
+  quantity?: number;
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Container from "../MainContainer/container";
+import Container from "../mainContainer/container";
 import FeaturesCard from "./featuresCard";
 
 const Features = () => {

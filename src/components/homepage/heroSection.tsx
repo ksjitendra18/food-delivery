@@ -1,7 +1,8 @@
 import { IKImage } from "imagekitio-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import Container from "../MainContainer/container";
+import Container from "../mainContainer/container";
 
 const HeroSection = () => {
   const imageStyle = {
@@ -17,9 +18,12 @@ const HeroSection = () => {
           Order your favorite food online with a tap of a button.{" "}
         </p>
 
-        <button className=" bg-white text-primary font-bold px-8 py-2 rounded-lg mt-5 ">
+        <Link
+          href="/order"
+          className=" bg-white text-primary font-bold px-8 py-3 rounded-lg mt-5 block w-fit "
+        >
           Order Now
-        </button>
+        </Link>
       </div>
 
       <div className="right-area flex justify-end flex-1">

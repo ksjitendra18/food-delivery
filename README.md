@@ -8,7 +8,7 @@ This is a full stack food ordering app.
 - **Backend**: Next API Routes 
 - **Auth**: Auth0
 - **Database**: MongoDB
-- **ORM**: Prisma
+- **ODM**: Mongoose
 - **Styling**: TailwindCSS
 - **State Management**: Redux Toolkit
 - **Hosting**: Vercel

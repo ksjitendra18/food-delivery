@@ -1,6 +1,16 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+// const MONGODB_URI = process.env.MONGODB_URI;
+
+function mongoURI() {
+  if (process.env.NODE_ENV === "development") {
+    return process.env.MONGODB_DEV_URI;
+  }
+  return process.env.MONGODB_URI;
+}
+
+// const MONGODB_URI = process.env.MONGODB_DEV_URI;
+const MONGODB_URI = mongoURI();
 
 if (!MONGODB_URI) {
   throw new Error(
