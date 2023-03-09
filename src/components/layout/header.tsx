@@ -5,6 +5,7 @@ import { Inter } from "@next/font/google";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useSelector } from "react-redux";
 import Item from "../../types/ItemType";
+import { RootState } from "../../store/store";
 
 const sora = Sora({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
@@ -14,7 +15,7 @@ const Header = () => {
 
   const [cartCount, setCartCount] = useState(0);
 
-  const cartItem = useSelector((state: any) => state.cartReducer.cart);
+  const cartItem = useSelector((state: RootState) => state.cartReducer.cart);
 
   // let total: number[] = [];
   // if (cartItem?.length > 0) {
@@ -36,7 +37,10 @@ const Header = () => {
   }, [cartItem]);
 
   useEffect(() => {
-    sumOfItems(total);
+    // to fix the type error,
+    // although could not be the best solution but by design we are acertain than there will default quantity value of 1.
+
+    sumOfItems(total as number[]);
   }, [cartItem, total]);
 
   const sumOfItems = (array: number[]) => {
@@ -69,10 +73,15 @@ const Header = () => {
             <li>
               <Link href="/order">All Items</Link>
             </li>
+            {user.user ? (
+              <li>
+                <Link href="/myorders">My Orders</Link>
+              </li>
+            ) : null}
 
             <li className="">
               <Link href="/cart">
-                <div className="bg-white text-black py-2 px-5 rounded-full text-[17px] flex items-center">
+                <div className="bg-white text-black py-2 px-5 rounded-lg text-[17px] flex items-center">
                   Cart
                   {cartCount !== 0 ? (
                     <span className="ml-2 py-[3px] px-[9px] text-white text-sm font-bold rounded-full bg-primary">
@@ -124,12 +133,34 @@ const Header = () => {
       </div>
 
       {openNav && (
-        <nav className="top-12 right-0 w-[100%] text-white absolute flex flex-col justify-center h-[300px] bg-primary items-center md:hidden">
+        <nav className="top-10 right-0 py-5 shadow-md w-[100%] text-white absolute flex flex-col justify-center h-auto bg-primary items-center md:hidden">
           <ul className="flex flex-col items-center gap-5 ">
             <li onClick={() => setOpenNav(false)}>
               <Link href="/">Home</Link>
             </li>
             <li onClick={() => setOpenNav(false)}>About</li>
+
+            <li onClick={() => setOpenNav(false)}>
+              <Link href="/order">All Items</Link>
+            </li>
+            <li onClick={() => setOpenNav(false)}>
+              <Link href="/myorders">My Orders</Link>
+            </li>
+
+            <li className="" onClick={() => setOpenNav(false)}>
+              <Link href="/cart">
+                <div className="bg-white text-black py-2 px-5 rounded-full text-[17px] flex items-center">
+                  Cart
+                  {cartCount !== 0 ? (
+                    <span className="ml-2 py-[3px] px-[9px] text-white text-sm font-bold rounded-full bg-primary">
+                      {cartCount}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </Link>
+            </li>
           </ul>
 
           <div className="cta mt-10 flex flex-col items-center">

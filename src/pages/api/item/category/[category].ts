@@ -9,12 +9,9 @@ export default async function handler(
 
   await dbConnect();
   try {
-    const featuredItems = await Items.find({ itemCategory: category }).exec();
-    console.log("featured items", featuredItems);
-    res.status(200).json({ success: true, data: featuredItems });
+    const ItemsOfCategory = await Items.find({ itemCategory: category }).exec();
 
-    // res.status(200).json({ success: true, data: featuredItems });
-    // res.status(200).json(featuredItems);
+    res.status(200).json({ success: true, data: ItemsOfCategory });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });

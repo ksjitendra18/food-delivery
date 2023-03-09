@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-const NewItemSchema = new mongoose.Schema({
+// this is also used in orderedItemModel and cartInfoModel
+export const NewItemSchema = new mongoose.Schema({
   itemName: {
     type: String,
     required: true,
@@ -32,6 +33,9 @@ const NewItemSchema = new mongoose.Schema({
   itemImageUrl: {
     type: String,
     required: true,
+  },
+  quantity: {
+    type: Number,
   },
 });
 

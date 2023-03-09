@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const ConfirmEmail = () => {
   // TODO: CHECK FOR PROFILE COMPLETION
   const emailVerificationStatus = useUser().user?.email_verified;
-  emailVerificationStatus
+  !emailVerificationStatus
     ? sessionStorage.setItem("emailConfirmBanner", "true")
     : null;
 

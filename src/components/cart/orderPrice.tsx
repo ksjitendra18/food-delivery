@@ -1,33 +1,14 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { CartState } from "../../store/cart/cartSlice";
+import { RootState } from "../../store/store";
 import Item from "../../types/ItemType";
+import getTotal from "../../utils/calculateTotal";
 
 const OrderPrice = () => {
-  const cartItem = useSelector((state: any) => state.cartReducer.cart);
+  const cartItem = useSelector((state: RootState) => state.cartReducer.cart);
 
-  const getTotal = () => {
-    let totalQuantity = 0;
-    let totalPrice = 0;
-    cartItem.forEach((item: Item) => {
-      totalQuantity += item.quantity!;
-      totalPrice += item.itemPrice! * item.quantity!;
-    });
-    return { totalPrice, totalQuantity };
-  };
-
-  // const [quantity, setQuantity] = useState(0);
-  // const [totalPrice, setTotalPrice] = useState(0);
-
-  // useEffect(() => {
-  //   setQuantity(getTotal().totalQuantity);
-  //   setPrice(getTotal().totalPrice);
-  // }, [cartItem]);
-
-  const quantity = getTotal().totalQuantity;
-  const price = getTotal().totalPrice;
-  // setTotalPrice(price)
+  const quantity = getTotal(cartItem).totalQuantity;
+  const price = getTotal(cartItem).totalPrice;
 
   return (
     <div className="pt-5 pb-10 px-3">

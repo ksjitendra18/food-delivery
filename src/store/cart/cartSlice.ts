@@ -44,18 +44,15 @@ const cartSlice = createSlice({
     // },
 
     addToCart: (state, action) => {
-      console.log("add to cart ran");
       const itemInCart = state.cart.find(
         (item: Item) => item._id === action.payload._id
       );
       if (itemInCart) {
         if (itemInCart.quantity !== undefined) {
-          console.log("item is in cart");
           itemInCart.quantity++;
         }
       } else {
         state.cart.push({ ...action.payload, quantity: 1 });
-        console.log("item is not in cart");
       }
     },
     increaseQuantity: (
@@ -84,6 +81,10 @@ const cartSlice = createSlice({
     },
   },
 });
+
+function check() {
+  console.log("cool project bro");
+}
 
 export const {
   addToCart,

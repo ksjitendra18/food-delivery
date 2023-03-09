@@ -10,6 +10,7 @@ import {
   setUploadedImageUrl,
 } from "../../store/fileUpload/fileUploadSlice";
 import imagekit from "../../utils/imageKitConfig";
+import { RootState } from "../../store/store";
 
 const FileUpload = () => {
   const inputRef = useRef<any>(null);
@@ -51,12 +52,12 @@ const FileUpload = () => {
   };
 
   const fileId = useSelector(
-    (state: any) => state.imageUploadReducer?.uploadedImageId
+    (state: RootState) => state.imageUploadReducer?.uploadedImageId
   );
   const handleDeleteImage = async () => {
     console.log("fileId", fileId);
     imagekit.options.urlEndpoint = "http://localhost:3000/api/ikauth";
-    imagekit.deleteFile(fileId);
+    imagekit.deleteFile(fileId!);
     imagekit.url;
     dispatch(deleteUploadedImage());
   };
