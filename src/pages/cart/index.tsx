@@ -4,16 +4,17 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CartItem from "../../components/cart/cartItem";
 import OrderPrice from "../../components/cart/orderPrice";
+import { RootState } from "../../store/store";
 import Item from "../../types/ItemType";
 
 const CartPage = () => {
-  const cartItem = useSelector((state: any) => state.cartReducer.cart);
+  const cartItem = useSelector((state: RootState) => state.cartReducer.cart);
 
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<Item[]>([]);
 
   // this is preventing the hydration error by nextjs
   useEffect(() => {
-    setCartItems(cartItem);
+    setCartItems(cartItem!);
   }, [cartItem]);
   return (
     <>

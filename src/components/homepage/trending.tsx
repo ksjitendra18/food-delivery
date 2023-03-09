@@ -16,13 +16,13 @@ const Trending = () => {
       <h2 className="text-center text-3xl md:text-[50px] text-white font-bold">
         Trending
       </h2>
-      <div className="flex justify-center items-center flex-col md:flex-row gap-10 mt-20">
+      <div className="flex justify-center flex-wrap items-center flex-col md:flex-row gap-10 mt-20">
         {!isLoading ? (
           data.data.map((item: Item) => (
             <ItemCard key={item._id as Key} item={item} />
           ))
         ) : (
-          <Loading />
+          <Loading color="white" />
         )}
       </div>
       {/* <div className="flex justify-center items-center flex-col md:flex-row gap-10 mt-20">
@@ -34,7 +34,7 @@ const Trending = () => {
       </div> */}
 
       <div className="flex justify-center items-center mt-12">
-        <button className="text-xl font-bold border-solid border-4 border-white text-white rounded-full px-9 py-4">
+        <button className="text-xl font-bold border-solid border-4 border-white text-white rounded-lg px-9 py-4">
           <Link href="/order">View All Items</Link>
         </button>
       </div>

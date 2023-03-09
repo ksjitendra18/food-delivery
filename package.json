@@ -23,6 +23,7 @@
     "nanoid": "^4.0.1",
     "next": "13.1.1",
     "nextjs-progressbar": "^0.0.16",
+    "razorpay": "^2.8.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.1",

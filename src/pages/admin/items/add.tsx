@@ -7,6 +7,7 @@ import { Id, toast } from "react-toastify";
 import FileUpload from "../../../components/admin/fileUpload";
 import Container from "../../../components/mainContainer/container";
 import FormError from "../../../components/ui/formError";
+import { RootState } from "../../../store/store";
 export type AdminAddItemsInputs = {
   itemName: string;
   itemPrice: number;
@@ -28,10 +29,10 @@ const AddNewItem = () => {
   const [imageAsset, setImageAsset] = useState(null);
 
   const imageId = useSelector(
-    (state: any) => state.imageUploadReducer?.uploadedImageId
+    (state: RootState) => state.imageUploadReducer?.uploadedImageId
   );
   const imageUrl = useSelector(
-    (state: any) => state.imageUploadReducer?.uploadedImageUrl
+    (state: RootState) => state.imageUploadReducer?.uploadedImageUrl
   );
 
   const uploadImage = (e: any) => {

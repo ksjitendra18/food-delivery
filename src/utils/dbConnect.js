@@ -54,4 +54,6 @@ async function dbConnect() {
   return cached.conn;
 }
 
+mongoose.set("strictQuery", false);
+
 export default dbConnect;
