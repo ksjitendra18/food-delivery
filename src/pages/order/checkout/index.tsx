@@ -1,5 +1,5 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { nanoid } from "@reduxjs/toolkit";
+import { nanoid } from "nanoid";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -63,7 +63,8 @@ export default function CheckoutPage() {
     console.log(data);
     setButtonLoading(true);
     const orderData = {
-      userId: user.user!.sid,
+      orderId: nanoid(15),
+      userId: user.user!.sub,
       userEmail: user.user!.email,
       userName: data.username,
       userAddress: data.useraddress,
@@ -191,7 +192,7 @@ export default function CheckoutPage() {
 
         <div className="flex-1 flex flex-col rounded-xl px-3 py-5 bg-primary md:max-w-[600px]">
           {user.user !== undefined ? (
-            <div className="my-5 flex flex-col mx-3 text-white">
+            <div className="flex flex-col mx-3 text-white">
               {/* <h3 className="font-bold text-xl mb-5">Name: {userInfo.name}</h3> */}
               {/* <h3 className="font-bold text-xl mb-5">Name</h3> */}
 
@@ -253,7 +254,7 @@ export default function CheckoutPage() {
                 {!buttonLoading ? (
                   <button
                     type="submit"
-                    className=" px-8 py-3 border-solid border-3 border-white rounded-full"
+                    className=" px-8 py-3 border-solid border-3 border-white rounded-lg"
                   >
                     {/* <Link href="/order/success">Proceed to pay</Link> */}
                     Proceed to pay

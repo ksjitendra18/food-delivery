@@ -22,7 +22,7 @@ const OrderPrice = () => {
       </h3>
 
       <div className="flex justify-center mt-7">
-        <button className="text-xl font-bold border-solid border-3 border-white text-white rounded-full px-7 py-2">
+        <button className="text-xl font-bold border-solid border-3 border-white text-white rounded-lg px-7 py-2">
           <Link href="/order/checkout">Checkout</Link>
         </button>
       </div>

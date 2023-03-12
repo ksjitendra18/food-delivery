@@ -14,19 +14,8 @@ const Header = () => {
   const user = useUser();
 
   const [cartCount, setCartCount] = useState(0);
-
+  const [userIsAdmin, setUserIsAdmin] = useState(false);
   const cartItem = useSelector((state: RootState) => state.cartReducer.cart);
-
-  // let total: number[] = [];
-  // if (cartItem?.length > 0) {
-  //   total = cartItem.map((item: Item) => item.quantity);
-  //   console.log("total is", total);
-  // }
-
-  // useEffect(() => {
-  //   console.log("use effect fired", total);
-  //   sumOfItems(total);
-  // }, [cartItem, total]);
 
   const total = useMemo(() => {
     if (cartItem?.length > 0) {
@@ -41,7 +30,12 @@ const Header = () => {
     // although could not be the best solution but by design we are acertain than there will default quantity value of 1.
 
     sumOfItems(total as number[]);
-  }, [cartItem, total]);
+
+    // temp for dev purpose only
+    if (user.user && user.user?.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
+      setUserIsAdmin(true);
+    }
+  }, [cartItem, total, user]);
 
   const sumOfItems = (array: number[]) => {
     let sum = 0;
@@ -54,6 +48,8 @@ const Header = () => {
 
     return sum;
   };
+
+  // console.log(userIsAdmin);
 
   return (
     <header
@@ -70,29 +66,44 @@ const Header = () => {
             <li>
               <Link href="/">Home</Link>
             </li>
-            <li>
-              <Link href="/order">All Items</Link>
-            </li>
-            {user.user ? (
+            {!userIsAdmin ? (
+              <li>
+                <Link href="/order">All Items</Link>
+              </li>
+            ) : null}
+            {user.user && !userIsAdmin ? (
               <li>
                 <Link href="/myorders">My Orders</Link>
               </li>
             ) : null}
 
-            <li className="">
-              <Link href="/cart">
-                <div className="bg-white text-black py-2 px-5 rounded-lg text-[17px] flex items-center">
-                  Cart
-                  {cartCount !== 0 ? (
-                    <span className="ml-2 py-[3px] px-[9px] text-white text-sm font-bold rounded-full bg-primary">
-                      {cartCount}
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </Link>
-            </li>
+            {user.user && userIsAdmin ? (
+              <>
+                <li>
+                  <Link href="/admin/items">All Items</Link>
+                </li>
+                <li>
+                  <Link href="/admin/orders">All Orders</Link>
+                </li>
+              </>
+            ) : null}
+
+            {!userIsAdmin && (
+              <li className="">
+                <Link href="/cart">
+                  <div className="bg-white text-black py-2 px-5 rounded-lg text-[17px] flex items-center">
+                    Cart
+                    {cartCount !== 0 ? (
+                      <span className="ml-2 py-[3px] px-[9px] text-white text-sm font-bold rounded-full bg-primary">
+                        {cartCount}
+                      </span>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </Link>
+              </li>
+            )}
           </ul>
 
           {user.isLoading ? (
