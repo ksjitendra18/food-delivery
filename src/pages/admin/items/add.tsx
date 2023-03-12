@@ -64,7 +64,7 @@ const AddNewItem = () => {
     console.log("formdata", formData);
 
     try {
-      const res = await fetch("/api/admin/item/add", {
+      const res = await fetch("/api/admin/items/add", {
         method: "POST",
         body: JSON.stringify(formData),
       });
@@ -134,7 +134,7 @@ const AddNewItem = () => {
               errors={errors}
               errorEmitter={"itemPrice"}
               errorType={"min"}
-              errorMessage={" Rating should be between 0 and 5"}
+              errorMessage={" Price should be greater than 0"}
             />
 
             <div>

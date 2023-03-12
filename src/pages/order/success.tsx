@@ -18,7 +18,7 @@ export default function OrderSuccess() {
               confimation soon. Meanwhile Check your order status.
             </p>
 
-            <button className="py-3 px-8 mt-5 font-bold border-solid border-2 border-white rounded-full">
+            <button className="py-3 px-8 mt-5 font-bold border-solid border-2 border-white rounded-lg">
               <Link href="/myorders">Order Status</Link>
             </button>
           </>

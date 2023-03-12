@@ -3,6 +3,7 @@ import Item from "./ItemType";
 export default interface OrderData {
   __v?: Number;
   _id: string;
+  orderId: string;
   cartItems: Item[];
   itemId: string[];
   orderStatus: "Preparing" | "Delivering" | "Delivered";
