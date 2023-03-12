@@ -38,9 +38,7 @@ export default function EditItemAdmin() {
     formState: { errors },
   } = useForm<AdminAddItemsInputs>();
 
-  // let formData = {};
-
-  // fetch existing information
+  // fetching exisiting item value and providing as default values
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -117,8 +115,8 @@ export default function EditItemAdmin() {
   }
 
   if (formData !== null) {
-    availableSelectValue = formData.itemIsAvailable === true ? "yes" : "no";
-    featuredSelectValue = formData.itemIsFeatured === true ? "yes" : "no";
+    availableSelectValue = formData?.itemIsAvailable === true ? "yes" : "no";
+    featuredSelectValue = formData?.itemIsFeatured === true ? "yes" : "no";
   }
   return (
     <>
@@ -139,7 +137,7 @@ export default function EditItemAdmin() {
                   id="itemName"
                   className=" border bg-[#f8f8f8] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                   {...register("itemName", { required: true })}
-                  defaultValue={formData.itemName}
+                  defaultValue={formData?.itemName}
                   onChange={() => {}}
                 />
               </div>
@@ -151,7 +149,7 @@ export default function EditItemAdmin() {
                   className=" border bg-[#f8f8f8] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                   {...register("itemPrice", { required: true, min: 0 })}
                   min={0}
-                  defaultValue={formData.itemPrice}
+                  defaultValue={formData?.itemPrice}
                   onChange={() => {}}
                 />
               </div>
@@ -181,7 +179,7 @@ export default function EditItemAdmin() {
                     max: 5,
                   })}
                   min={0}
-                  defaultValue={formData.itemRating}
+                  defaultValue={formData?.itemRating}
                 />
                 <FormError
                   className="mt-3"
@@ -199,7 +197,7 @@ export default function EditItemAdmin() {
                   {...register("itemCategory")}
                   id="category"
                   className=" border bg-[#f8f8f8] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
-                  defaultValue={formData.itemCategory}
+                  defaultValue={formData?.itemCategory}
                 >
                   <option value="uncategorised">Choose a category</option>
                   <option value="veg">Veg Dishes</option>
